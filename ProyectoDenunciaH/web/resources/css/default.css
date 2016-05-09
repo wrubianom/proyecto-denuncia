@@ -1,0 +1,68 @@
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+a:link, a:visited {
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+body{
+    background-image: url(http://localhost:8080/ProyectoDenunciaH/resources/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#top{
+    color: #ffffff !important;
+    font-family:"Comic Sans MS" !important; 
+    font-weight: bold !important;
+    font-style: normal !important;
+    font-size: 30px !important;
+    background: rgba(0,0,0,0) !important;
+}
+
+.TextoSubTitulo{
+    color: #ffffff;
+    font-family:"Arial"; 
+    font-weight: bold;
+    font-style: normal;
+    font-size: 26px;
+}
+
+.TextoLabaelOne{
+    color: #ffffff;
+    font-family:"Arial"; 
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.TextoLegend{
+    color: #ffffff;
+    font-family:"Arial"; 
+    font-weight: normal;
+    font-style: italic;
+    font-size: 10px;
+}

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template/basicTemplate.xhtml">
+
+    <ui:define name="content">
+        <center><h:outputLabel value="BIENES HURTADOS" styleClass="TextoSubTitulo"/></center><br/><br/>
+        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #4: Descripción del Bien</legend>
+            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                <h:outputLabel for="claseBien" value="Clase de Bien: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="claseBien" label="Clase de Bien" title="Clase de Bien" maxlength="20" immediate="true" placeholder="Clase de Bien" validatorMessage="Error en Clase de Bien"/>
+                <h:outputLabel for="tipoBien" value="Tipo de Bien: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoBien" label="Tipo de Bien" title="Tipo de Bien" maxlength="20" placeholder="Tipo de Bien" validatorMessage="Error en Tipo de Bien"/>
+                <h:outputLabel for="asegurado" value="Asegurado: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="asegurado" label="Asegurado" title="Asegurado" maxlength="20" placeholder="Asegurado" validatorMessage="Error en Asegurado"/>
+                <h:outputLabel for="marca" value="Marca: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="marca" label="Marca" title="Marca" maxlength="20" placeholder="Marca" validatorMessage="Error en Marca"/>
+                <h:outputLabel for="linea" value="Linea: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="linea" label="Linea" title="Linea" maxlength="20" placeholder="Linea" validatorMessage="Error en Linea"/>
+                <h:outputLabel for="elementoEstatal" value="Elemento Estatal: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="elementoEstatal" label="Elemento Estatal" title="Elemento Estatal" maxlength="20" placeholder="Elemento Estatal" validatorMessage="Error en Elemento Estatal"/>
+                <h:outputLabel for="institucion" value="Institución: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="institucion" label="Institución" title="Institución" maxlength="20" placeholder="Institución" validatorMessage="Error en Institución"/>
+                <h:outputLabel for="cantidad" value="Cantidad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="cantidad" label="Cantidad" title="Cantidad" maxlength="20" placeholder="Cantidad" validatorMessage="Error en Cantidad"/>
+                <h:outputLabel for="valorActual" value="Valor Actual: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="valorActual" label="Valor Actual" title="Valor Actual" maxlength="20" placeholder="Valor Actual" validatorMessage="Error en Valor Actual"/>
+                <h:outputLabel for="valorComercial" value="Valor Comercial: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="valorComercial" label="Valor Comercial" title="Valor Comercial" maxlength="20" placeholder="Valor Comercial" validatorMessage="Error en Valor Comercial"/>
+            </h:panelGrid>
+        </fieldset><br/>
+        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #4: Datos Autoridad A Disposición</legend>
+            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                <h:outputLabel for="destino" value="Destino: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="destino" label="Destino" title="Destino" maxlength="20" placeholder="Destino" validatorMessage="Error en Destino"/>
+                <h:outputLabel for="autoridad" value="Autoridad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="autoridad" label="Autoridad" title="Autoridad" maxlength="20" placeholder="Autoridad" validatorMessage="Error en Autoridad"/>
+                <h:outputLabel for="ciudadautoridad" value="Ciudad Autoridad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="ciudadautoridad" label="Ciudad Autoridad" title="Ciudad Autoridad" maxlength="20" placeholder="Ciudad Autoridad" validatorMessage="Error en Ciudad Autoridad"/>
+                <h:outputLabel for="delitoInmoviliario" value="Delito Inmoviliario: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="delitoInmoviliario" label="Delito Inmoviliario" title="Delito Inmoviliario" maxlength="20" placeholder="Delito Inmoviliario" validatorMessage="Error en Delito Inmoviliario"/>
+                <h:outputLabel for="tipoNovedad" value="Tipo Novedad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoNovedad" label="Tipo Novedad" title="Tipo Novedad" maxlength="20" placeholder="Tipo Novedad" validatorMessage="Error en Tipo Novedad"/>
+            </h:panelGrid>
+        </fieldset><br/>
+        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
+    </ui:define>
+</ui:composition>

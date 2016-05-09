@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template/basicTemplate.xhtml">
+
+    <ui:define name="content">
+        <center><h:outputLabel value="A QUIEN VOY A DENUNCIAR" styleClass="TextoSubTitulo"/></center><br/><br/>
+        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #3: Datos Generales</legend>
+            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                <h:outputLabel for="agresorIdentificado" value="Agresor Identificado: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="agresorIdentificado" label="Agresor Identificado" title="Agresor Identificado" maxlength="20" immediate="true" placeholder="Agresor Identificado" validatorMessage="Error en Agresor Identificado"/>
+                <h:outputLabel for="relacionAgresor" value="Relación con Agresor: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="relacionAgresor" label="Relación con Agresor" title="Relación con Agresor" maxlength="20" placeholder="Relación con Agresor" validatorMessage="Error en Relación con Agresor"/>
+                <h:outputLabel for="tipoIdentificacion" value="Tipo de Identificación: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoIdentificacion" label="Tipo de Identificación" title="Tipo de Identificación" maxlength="20" placeholder="Tipo de Identificación" validatorMessage="Error en Tipo de Identificación"/>
+                <h:outputLabel for="identificacion" value="Identificación: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="identificacion" label="Identificación" title="Identificación" maxlength="20" placeholder="Identificación" validatorMessage="Error en Identificación"/>
+                <h:outputLabel for="expedida" value="Expedida: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="expedida" label="Expedida" title="Expedida" maxlength="20" placeholder="Expedida" validatorMessage="Error en Expedida"/>
+                <h:outputLabel for="apellido1" value="Apellido 1: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="apellido1" label="Apellido 1" title="Apellido 1" maxlength="20" placeholder="Apellido 1" validatorMessage="Error en Apellido 1"/>
+                <h:outputLabel for="apellido2" value="Apellido 2: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="apellido2" label="Apellido 2" title="Apellido 2" maxlength="20" placeholder="Apellido 2" validatorMessage="Error en Apellido 2"/>
+                <h:outputLabel for="nombre1" value="Nombre 1: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="nombre1" label="Nombre 1" title="Nombre 1" maxlength="20" placeholder="Nombre 1" validatorMessage="Error en Nombre 1"/>
+                <h:outputLabel for="nombre2" value="Nombre 2: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="nombre2" label="Nombre 2" title="Nombre 2" maxlength="20" placeholder="Nombre 2" validatorMessage="Error en Nombre 2"/>
+                <h:outputLabel for="genero" value="Genero: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="genero" label="Genero" title="Genero" maxlength="20" placeholder="Genero" validatorMessage="Error en Genero"/>
+                <h:outputLabel for="fechaNacimiento" value="Fecha de Nacimiento: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:calendar id="fechaNacimiento" label="Fecha de Nacimiento" title="Fecha de Nacimiento" maxlength="20" placeholder="Fecha de Nacimiento" validatorMessage="Error en Fecha de Nacimiento"/>
+                <h:outputLabel for="lugarNacimiento" value="Lugar de Nacimiento: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="lugarNacimiento" label="Lugar de Nacimiento" title="Lugar de Nacimiento" maxlength="20" placeholder="Lugar de Nacimiento" validatorMessage="Error en Lugar de Nacimiento"/>
+            </h:panelGrid>
+        </fieldset><br/>
+        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #3: Datos Específicos</legend>
+            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                <h:outputLabel for="edad" value="Edad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="edad" label="Edad" title="Edad" maxlength="20" placeholder="Edad" validatorMessage="Error en Edad"/>
+                <h:outputLabel for="tipoAños" value="Tipo de Años: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoAños" label="Tipo de Años" title="Tipo de Años" maxlength="20" placeholder="Tipo de Años" validatorMessage="Error en Tipo de Años"/>
+                <h:outputLabel for="estadoCivil" value="Estado Civil: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="estadoCivil" label="Estado Civil" title="Estado Civil" maxlength="20" placeholder="Estado Civil" validatorMessage="Error en Estado Civil"/>
+                <h:outputLabel for="nivelAcademico" value="Nivel Academico: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="nivelAcademico" label="Nivel Academico" title="Nivel Academico" maxlength="20" placeholder="Nivel Academico" validatorMessage="Error en Nivel Academico"/>
+                <h:outputLabel for="claseEmpleado" value="Clase Empleado: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="claseEmpleado" label="Clase Empleado" title="Clase Empleado" maxlength="20" placeholder="Clase Empleado" validatorMessage="Error en Clase Empleado"/>
+                <h:outputLabel for="profesion" value="Profesión: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="profesion" label="Profesión" title="Profesión" maxlength="20" placeholder="Profesión" validatorMessage="Error en Profesión"/>
+                <h:outputLabel for="lugarResidencia" value="Lugar de Residencia: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="lugarResidencia" label="Lugar de Residencia" title="Lugar de Residencia" maxlength="20" placeholder="Lugar de Residencia" validatorMessage="Error en Lugar de Residencia"/>
+                <h:outputLabel for="barrio" value="Barrio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="barrio" label="Barrio" title="Barrio" maxlength="20" placeholder="Barrio" validatorMessage="Error en Barrio"/>
+            </h:panelGrid>
+        </fieldset><br/>
+        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
+    </ui:define>
+</ui:composition>

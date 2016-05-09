@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./template/basicTemplate.xhtml">
+
+    <ui:define name="content">
+        <center><h:outputLabel value="INICIAR SESIÓN" styleClass="TextoSubTitulo"/></center><br/><br/>
+        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+            <legend align="left" style="color: #ffffff; font-style: italic;">Iniciar Sesión</legend>
+            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                <h:outputLabel for="usuario" value="Usuario: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="usuario" label="Usuario" title="Usuario" maxlength="20" immediate="true" placeholder="Usuario" validatorMessage="Error en Usuario"/>
+                <h:outputLabel for="password" value="Password: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:password id="password" label="Password" title="Password" maxlength="20" placeholder="Password" validatorMessage="Error en Password"/>
+            </h:panelGrid>
+        </fieldset><br/>
+        <p:commandButton id="button" value="Ingresar" label="Ingresar" title="Ingresar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
+    </ui:define>
+</ui:composition>
