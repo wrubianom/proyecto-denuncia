@@ -7,35 +7,38 @@
                 template="./template/basicTemplate.xhtml">
 
     <ui:define name="content">
-        <center><h:outputLabel value="DELITO A DENUNCIAR" styleClass="TextoSubTitulo"/></center><br/><br/>
+        <center><h:outputLabel value="LUGAR DEL DELITO" styleClass="TextoSubTitulo"/></center><br/><br/>
         <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
-            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Conducta Asociada</legend>
+            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #1: Ubicación</legend>
             <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
-                <h:outputLabel for="tipoDelito" value="Tipo de Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="tipoDelito" label="Tipo de Delito" title="Tipo de Delito" maxlength="20" immediate="true" placeholder="Tipo de Delito" validatorMessage="Error en Tipo de Delito"/>
-                <h:outputLabel for="delito" value="Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="delito" label="Delito" title="Delito" maxlength="20" placeholder="Delito" validatorMessage="Error en Delito"/>
-                <h:outputLabel for="fechaDelito" value="Fecha del Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:calendar id="fechaDelito" label="Fecha del Delito" title="Fecha del Delito" validatorMessage="Error en Fecha del Delito" placeholder="Fecha del Delito" />
-                <h:outputLabel for="otroDelito" value="Otro Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="otroDelito" label="Otro Delito" title="Otro Delito" maxlength="20" placeholder="Otro Delito" validatorMessage="Error en Otro Delito"/>
-            </h:panelGrid><br/>
+                <h:outputLabel for="latitud" value="Latitud: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="latitud" label="Latitud" title="Latitud" maxlength="20" immediate="true" placeholder="Latitud" validatorMessage="Error en Latitud"/>
+                <h:outputLabel for="longitud" value="Longitud: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="longitud" label="Longitud" title="Longitud" maxlength="20" placeholder="Longitud" validatorMessage="Error en Longitud"/>
+                <h:outputLabel for="municipio" value="Municipio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="municipio" label="Municipio" title="Municipio" maxlength="20" placeholder="Municipio" validatorMessage="Error en Municipio"/>
+                <h:outputLabel for="barrio" value="Barrio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="barrio" label="Barrio" title="Barrio" maxlength="20" placeholder="Barrio" validatorMessage="Error en Barrio"/>
+                <h:outputLabel for="claseSitio" value="Clase de Sitio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="claseSitio" label="Clase de Sitio" title="Clase de Sitio" maxlength="20" placeholder="Clase de Sitio" validatorMessage="Error en Clase de Sitio"/>
+                <h:outputLabel for="zona" value="Zona: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="zona" label="Zona" title="Zona" maxlength="20"  placeholder="Zona" validatorMessage="Error en Zona"/>
+                <h:outputLabel for="tipoDireccion1" value="Tipo Dirección 1: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoDireccion1" label="Tipo Dirección 1" title="Tipo Dirección 1" maxlength="20" placeholder="Tipo Dirección 1" validatorMessage="Error en Tipo Dirección 1"/>
+                <h:outputLabel for="com1" value="Com1: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="com1" label="Com1" title="Com1" maxlength="20" placeholder="Com1" validatorMessage="Error en Com1"/>
+                <h:outputLabel for="letra1" value="Letra1: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="letra1" label="Letra1" title="Letra1" maxlength="20" placeholder="Letra1" validatorMessage="Error en Letra1"/>
+                <h:outputLabel for="tipoDireccion2" value="Tipo Dirección 2: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="tipoDireccion2" label="Tipo Dirección 2" title="Tipo Dirección 2" maxlength="20" placeholder="Tipo Dirección 2" validatorMessage="Error en Tipo Dirección 2"/>
+                <h:outputLabel for="com2" value="Com2: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="com2" label="Com2" title="Com2" maxlength="20" placeholder="Com2" validatorMessage="Error en Com2"/>
+                <h:outputLabel for="letra2" value="Letra2: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="letra2" label="Letra2" title="Letra2" maxlength="20" placeholder="Letra2" validatorMessage="Error en Letra2"/>
+                <h:outputLabel for="puntoCardenal" value="Punto Cardenal: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="puntoCardenal" label="Punto Cardenal" title="Punto Cardenal" maxlength="20" placeholder="Punto Cardenal" validatorMessage="Error en Punto Cardenal"/>
+            </h:panelGrid>
         </fieldset><br/>
-        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
-            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Caracteristicas de la Conducta</legend>
-            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
-                <h:outputLabel for="unidadInvestigativa" value="Unidad Investigativa: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="unidadInvestigativa" label="Unidad Investigativa" title="Unidad Investigativa" maxlength="20" placeholder="Unidad Investigativa" validatorMessage="Error en Unidad Investigativa"/>
-                <h:outputLabel for="modalidad" value="Modalidad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="modalidad" label="Modalidad" title="Modalidad" maxlength="20" placeholder="Modalidad" validatorMessage="Error en Modalidad"/>
-                <h:outputLabel for="armaEmpleada" value="Arma Empleada: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:calendar id="armaEmpleada" label="Arma Empleada" title="Arma Empleada" validatorMessage="Error en Arma Empleada" placeholder="Arma Empleada" />
-                <h:outputLabel for="movilAgresor" value="Movil Agresor: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="movilAgresor" label="Movil Agresor" title="Movil Agresor" maxlength="20" placeholder="Movil Agresor" validatorMessage="Error en Movil Agresor"/>
-                <h:outputLabel for="movilVictima" value="Movil Victima: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="movilVictima" label="Movil Victima" title="Movil Victima" maxlength="20" placeholder="Movil Victima" validatorMessage="Error en Movil Victima"/>
-            </h:panelGrid><br/>
-        </fieldset><br/>
-        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 60%;"/>
+        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
     </ui:define>
 </ui:composition>
