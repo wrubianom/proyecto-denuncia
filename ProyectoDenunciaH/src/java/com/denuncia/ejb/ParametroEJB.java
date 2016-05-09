@@ -5,7 +5,8 @@
  */
 package com.denuncia.ejb;
 
-import com.denuncia.entities.Denuncia;
+import com.denuncia.entities.Parametro;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,21 +16,16 @@ import javax.persistence.PersistenceContext;
  * @author WIlliam Rubiano
  */
 @Stateless
-public class DenunciaEJB implements DenunciaEJBLocal {
+public class ParametroEJB implements ParametroEJBLocal {
 
     @PersistenceContext
     EntityManager em;
 
     @Override
-    public Denuncia crearDenuncia(Denuncia denunciaNueva) {
-
-        Denuncia resultado = null;
-        try {
-            resultado = this.em.merge(denunciaNueva);
-        } catch (Exception e) {
-            System.out.println("Error el crear denuncia");
-        }
-        return resultado;
+    public List<Parametro> getParametroTipo(String tipo) {
+        return this.em.createNamedQuery("Parametro.findByTipoParametro").setParameter("tipoParametro", tipo).getResultList();
     }
 
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
 }

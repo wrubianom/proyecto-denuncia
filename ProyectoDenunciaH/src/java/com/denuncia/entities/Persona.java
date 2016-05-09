@@ -86,6 +86,9 @@ public class Persona implements Serializable {
     private Parametro idClaseEmpleado;
     @JoinColumn(name = "id_nivel_academico", referencedColumnName = "id_parametro")
     @ManyToOne
+    private Parametro idTipoDocumento;
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_parametro")
+    @ManyToOne
     private Parametro idNivelAcademico;
     @JoinColumn(name = "id_estado_civil", referencedColumnName = "id_parametro")
     @ManyToOne
@@ -253,9 +256,17 @@ public class Persona implements Serializable {
         return true;
     }
 
+    public Parametro getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(Parametro idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+    }
+
     @Override
     public String toString() {
         return "com.denuncia.entities.Persona[ idPersona=" + idPersona + " ]";
     }
-    
+
 }

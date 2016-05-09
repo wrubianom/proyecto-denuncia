@@ -6,6 +6,7 @@
 package com.denuncia.ejb;
 
 import com.denuncia.entities.Denuncia;
+import com.denuncia.entities.DenunciaPersona;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,21 +16,22 @@ import javax.persistence.PersistenceContext;
  * @author WIlliam Rubiano
  */
 @Stateless
-public class DenunciaEJB implements DenunciaEJBLocal {
+public class QuienDenunciaEJB implements QuienDenunciaEJBLocal {
 
     @PersistenceContext
     EntityManager em;
 
     @Override
-    public Denuncia crearDenuncia(Denuncia denunciaNueva) {
-
-        Denuncia resultado = null;
+    public DenunciaPersona crearDenunciaPersona(DenunciaPersona nueva) {
+        DenunciaPersona resultado = null;
         try {
-            resultado = this.em.merge(denunciaNueva);
+            resultado = this.em.merge(nueva);
         } catch (Exception e) {
             System.out.println("Error el crear denuncia");
         }
         return resultado;
     }
 
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
 }

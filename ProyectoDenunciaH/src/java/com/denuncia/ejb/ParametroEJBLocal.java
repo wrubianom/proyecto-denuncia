@@ -5,7 +5,8 @@
  */
 package com.denuncia.ejb;
 
-import com.denuncia.entities.Denuncia;
+import com.denuncia.entities.Parametro;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -13,7 +14,7 @@ import javax.ejb.Local;
  * @author WIlliam Rubiano
  */
 @Local
-public interface DenunciaEJBLocal {
+public interface ParametroEJBLocal {
 
-    abstract Denuncia crearDenuncia(Denuncia denunciaNueva);
+    public List<Parametro> getParametroTipo(String tipo);
 }

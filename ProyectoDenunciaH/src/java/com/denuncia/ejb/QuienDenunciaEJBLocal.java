@@ -5,7 +5,7 @@
  */
 package com.denuncia.ejb;
 
-import com.denuncia.entities.Denuncia;
+import com.denuncia.entities.DenunciaPersona;
 import javax.ejb.Local;
 
 /**
@@ -13,7 +13,7 @@ import javax.ejb.Local;
  * @author WIlliam Rubiano
  */
 @Local
-public interface DenunciaEJBLocal {
+public interface QuienDenunciaEJBLocal {
 
-    abstract Denuncia crearDenuncia(Denuncia denunciaNueva);
+    public DenunciaPersona crearDenunciaPersona(DenunciaPersona nueva);
 }

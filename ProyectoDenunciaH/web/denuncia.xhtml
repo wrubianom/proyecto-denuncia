@@ -1,41 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="./template/basicTemplate.xhtml">
+                template="./template/basicTemplate.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                >
 
     <ui:define name="content">
-        <center><h:outputLabel value="DELITO A DENUNCIAR" styleClass="TextoSubTitulo"/></center><br/><br/>
-        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
-            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Conducta Asociada</legend>
-            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
-                <h:outputLabel for="tipoDelito" value="Tipo de Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="tipoDelito" label="Tipo de Delito" title="Tipo de Delito" maxlength="20" immediate="true" placeholder="Tipo de Delito" validatorMessage="Error en Tipo de Delito"/>
-                <h:outputLabel for="delito" value="Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="delito" label="Delito" title="Delito" maxlength="20" placeholder="Delito" validatorMessage="Error en Delito"/>
-                <h:outputLabel for="fechaDelito" value="Fecha del Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:calendar id="fechaDelito" label="Fecha del Delito" title="Fecha del Delito" validatorMessage="Error en Fecha del Delito" placeholder="Fecha del Delito" />
-                <h:outputLabel for="otroDelito" value="Otro Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="otroDelito" label="Otro Delito" title="Otro Delito" maxlength="20" placeholder="Otro Delito" validatorMessage="Error en Otro Delito"/>
-            </h:panelGrid><br/>
-        </fieldset><br/>
-        <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
-            <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Caracteristicas de la Conducta</legend>
-            <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
-                <h:outputLabel for="unidadInvestigativa" value="Unidad Investigativa: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="unidadInvestigativa" label="Unidad Investigativa" title="Unidad Investigativa" maxlength="20" placeholder="Unidad Investigativa" validatorMessage="Error en Unidad Investigativa"/>
-                <h:outputLabel for="modalidad" value="Modalidad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="modalidad" label="Modalidad" title="Modalidad" maxlength="20" placeholder="Modalidad" validatorMessage="Error en Modalidad"/>
-                <h:outputLabel for="armaEmpleada" value="Arma Empleada: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:calendar id="armaEmpleada" label="Arma Empleada" title="Arma Empleada" validatorMessage="Error en Arma Empleada" placeholder="Arma Empleada" />
-                <h:outputLabel for="movilAgresor" value="Movil Agresor: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="movilAgresor" label="Movil Agresor" title="Movil Agresor" maxlength="20" placeholder="Movil Agresor" validatorMessage="Error en Movil Agresor"/>
-                <h:outputLabel for="movilVictima" value="Movil Victima: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="movilVictima" label="Movil Victima" title="Movil Victima" maxlength="20" placeholder="Movil Victima" validatorMessage="Error en Movil Victima"/>
-            </h:panelGrid><br/>
-        </fieldset><br/>
-        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 60%;"/>
+        <h:form id="formularioDelitoDenunciar">
+            <center><h:outputLabel value="DELITO A DENUNCIAR" styleClass="TextoSubTitulo"/></center><br/><br/>
+            <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+                <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Conducta Asociada</legend>
+                <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+                    <h:outputLabel for="tipoDelito" value="Tipo de Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="tipoDelito" value="#{denunciaController.denunciaNueva.idTipoDelito.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                        <f:selectItems value="#{denunciaController.tipoDelitos}" var="tipodelitos" itemLabel="#{tipodelitos.nombreParametro}" itemValue="#{tipodelitos.idParametro}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="delito" value="Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+
+                    <p:selectOneMenu id="delito" value="#{denunciaController.denunciaNueva.idDelito.idParametro}" >
+                        <f:selectItems value="#{denunciaController.delitoslist}" var="delitos" itemLabel="#{delitos.nombreParametro}" itemValue="#{delitos.idParametro}"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="fechaDelito" value="Fecha del Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:calendar id="fechaDelito" label="Fecha del Delito" title="Fecha del Delito" validatorMessage="Error en Fecha del Delito"  required="true" requiredMessage="Ingrese la fecha del delito"
+                                placeholder="Fecha del Delito" value="#{denunciaController.denunciaNueva.fechaDelito}"/>
+                    <h:outputLabel for="otroDelito" value="Otro Delito: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:inputText id="otroDelito" label="Otro Delito" title="Otro Delito" maxlength="20" placeholder="Otro Delito" 
+                                 validatorMessage="Error en Otro Delito" value="#{denunciaController.denunciaNueva.otroDelito}"/>
+                </h:panelGrid><br/>
+            </fieldset><br/>
+            <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
+                <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #2: Caracteristicas de la Conducta</legend>
+                <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
+
+                    <h:outputLabel for="unidadInvestigativa" value="Unidad Investigativa: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="unidadInvestigativa" label="Unidad Investigativa" maxlength="20" validatorMessage="Error en Unidad Investigativa" 
+                                     value="#{denunciaController.denunciaNueva.unidadInvestigativa.idParametro}">
+                        <f:selectItems value="#{denunciaController.unidadInvestigativa}" var="unidad" itemLabel="#{unidad.nombreParametro}" itemValue="#{unidad.idParametro}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="modalidad" value="Modalidad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="modalidad" value="#{denunciaController.denunciaNueva.modalidad.idParametro}">
+                        <f:selectItems value="#{denunciaController.modalidades}" var="modalidades" itemLabel="#{modalidades.nombreParametro}" itemValue="#{modalidades.idParametro}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="armaEmpleada" value="Arma Empleada: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="armaEmpleada" value="#{denunciaController.denunciaNueva.armaEmpleada.idParametro}">
+                        <f:selectItems value="#{denunciaController.tiposArmas}" var="armemple" itemLabel="#{armemple.nombreParametro}" itemValue="#{armemple.idParametro}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="movilAgresor" value="Movil Agresor: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="movilAgresor" value="#{denunciaController.denunciaNueva.movilAgreado.idParametro}">
+                        <f:selectItems value="#{denunciaController.tiposMoviles}" var="movilAgre" itemLabel="#{movilAgre.nombreParametro}" itemValue="#{movilAgre.idParametro}"/>
+                    </p:selectOneMenu>
+                    <h:outputLabel for="movilVictima" value="Movil Victima: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                    <p:selectOneMenu id="movilVictima" value="#{denunciaController.denunciaNueva.movilVictima.idParametro}">
+                        <f:selectItems value="#{denunciaController.tiposMoviles}" var="movilVic" itemLabel="#{movilVic.nombreParametro}" itemValue="#{movilVic.idParametro}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid><br/>
+            </fieldset><br/>
+            <p:commandButton action="#{denunciaController.crearDenuncia()}" update="formularioDelitoDenunciar growl" value="Registrar" ></p:commandButton>
+            <ui:remove>
+                <h:commandButton actionListener="#{denunciaController.crearDenuncia()}"  value="Registrar" label="Registrar" title="Registrar"  style="font-size: smaller;margin-left: 60%;"></h:commandButton>
+            </ui:remove>
+            <p:growl id="growl" showDetail="true" sticky="true" />
+        </h:form>
     </ui:define>
 </ui:composition>
+
+
