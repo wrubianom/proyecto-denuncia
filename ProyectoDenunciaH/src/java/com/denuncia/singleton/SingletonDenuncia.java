@@ -6,6 +6,7 @@
 package com.denuncia.singleton;
 
 import com.denuncia.entities.Denuncia;
+import com.denuncia.entities.DenunciaPersona;
 
 /**
  *
@@ -15,6 +16,7 @@ public class SingletonDenuncia {
 
     public static SingletonDenuncia instancia = null;
     private Denuncia denuncia = new Denuncia();
+    private DenunciaPersona denunciaPersona = new DenunciaPersona();
 
     private SingletonDenuncia() {
     }
@@ -33,6 +35,15 @@ public class SingletonDenuncia {
 
     public void setDenuncia(Denuncia denuncia) {
         this.denuncia = denuncia;
+    }
+
+    public DenunciaPersona getDenunciaPersona() {
+
+        return denunciaPersona;
+    }
+
+    public void setDenunciaPersona(DenunciaPersona denunciaPersona) {
+        this.denunciaPersona = denunciaPersona;
     }
 
 }

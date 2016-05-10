@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -54,8 +56,19 @@ public class QuienDenunciaController implements Serializable {
 
     @PostConstruct
     private void init() {
-        inicializarPersona();
         denunciaCurso = SingletonDenuncia.getinstance().getDenuncia();
+        inicializarPersona();
+        if (denunciaCurso != null && denunciaCurso.getIdDenuncia() != null) {
+            DenunciaPersona resTem = this.quienDenunciaEJB.consultarDenunciaPersonaByIdDenuncia(denunciaCurso.getIdDenuncia());
+
+            if (resTem != null && resTem.getIdDenunciaPersona() != null) {
+                denunciaPersonaCurso = resTem;
+                this.personaDenuncia = resTem.getIdPersona();
+            }
+            System.out.println(""
+                    + "entro por diferente de null");
+        }
+
         this.relacionAgresor = this.parametroEJB.getParametroTipo("RelacionAgresor");
         this.tipoIdentificacionList = this.parametroEJB.getParametroTipo("TipoDocumento");
         this.tipoSexolist = this.parametroEJB.getParametroTipo("TipoSexo");
@@ -81,10 +94,19 @@ public class QuienDenunciaController implements Serializable {
         this.personaDenuncia.setSexo(new Parametro());
     }
 
-    public void crearQuienDenuncia() {
+    public String crearQuienDenuncia() {
         this.denunciaPersonaCurso.setIdDenuncia(denunciaCurso);
         this.denunciaPersonaCurso.setIdPersona(personaDenuncia);
+        System.out.println("la persona ");
         DenunciaPersona res = this.quienDenunciaEJB.crearDenunciaPersona(denunciaPersonaCurso);
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (res != null && res.getIdDenuncia() != null) {
+            System.out.println("el id es " + res.getIdDenuncia());
+            return "BIENES_HURTADOS";
+        } else {
+            context.addMessage(null, new FacesMessage("Message", "No se pudo asociar la persona a la denuncia... Intente nuevamente"));
+        }
+        return "";
     }
 
     public Denuncia getDenunciaCurso() {
