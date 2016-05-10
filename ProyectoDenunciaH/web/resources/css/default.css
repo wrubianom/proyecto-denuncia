@@ -66,3 +66,22 @@ body{
     font-style: italic;
     font-size: 10px;
 }
+
+
+
+.ui-menuitem-text{
+    color: #ffffff !important;
+    font-family:"Arial"; 
+    font-weight: normal;
+    font-style: italic;
+    font-size: small;
+}
+
+.ui-menuitem-link {
+    background:darkgreen !important; 
+    font-size: small;
+}
+
+.ui-tabmenu-nav{
+    background: rgba(0,0,0,0) !important; 
+}
