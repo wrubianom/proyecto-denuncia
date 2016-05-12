@@ -29,5 +29,7 @@ public interface DenunciaDelitoEJBLocal {
     List<DenunciaDelito> findRange(int[] range);
 
     int count();
-    
+
+    public DenunciaDelito findByIDDenuncia(int ID);
+
 }

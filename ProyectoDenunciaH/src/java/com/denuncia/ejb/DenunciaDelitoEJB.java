@@ -6,9 +6,11 @@
 package com.denuncia.ejb;
 
 import com.denuncia.entities.DenunciaDelito;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class DenunciaDelitoEJB extends AbstractFacade<DenunciaDelito> implements DenunciaDelitoEJBLocal {
+
     @PersistenceContext(unitName = "ProyectoDenunciaHPU")
     private EntityManager em;
 
@@ -27,5 +30,18 @@ public class DenunciaDelitoEJB extends AbstractFacade<DenunciaDelito> implements
     public DenunciaDelitoEJB() {
         super(DenunciaDelito.class);
     }
-    
+
+    public DenunciaDelito findByIDDenuncia(int ID) {
+        try {
+            List<DenunciaDelito> list = null;
+            list = em.createNamedQuery("DenunciaDelito.findByIdDenuncia").setParameter("ingDenuncia", ID).getResultList();
+            if (list != null && !list.isEmpty()) {
+                return list.get(0);
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.toString());
+        }
+        return null;
+    }
+
 }

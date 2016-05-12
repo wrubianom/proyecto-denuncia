@@ -19,16 +19,14 @@
             <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #1: Ubicación</legend>
             <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
                 <h:outputLabel for="latitud" value="Latitud: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="latitud" label="Latitud" value="#{denunciaDelitoController.denunciaDelito.latitud}" required="true" title="Latitud" maxlength="20" immediate="true" placeholder="Latitud" validatorMessage="Error en Latitud"/>
+                <p:inputText id="latitud" label="Latitud" value="#{denunciaDelitoController.lat}" disabled="true" required="true" title="Latitud" maxlength="20" immediate="true" placeholder="Latitud" validatorMessage="Error en Latitud"/>
                 <h:outputLabel for="longitud" value="Longitud: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="longitud" label="Longitud" value="#{denunciaDelitoController.denunciaDelito.longitud}" required="true" title="Longitud" maxlength="20" placeholder="Longitud" validatorMessage="Error en Longitud"/>
+                <p:inputText id="longitud" label="Longitud" value="#{denunciaDelitoController.lng}" disabled="true" required="true" title="Longitud" maxlength="20" placeholder="Longitud" validatorMessage="Error en Longitud"/>
 
                 <h:outputLabel for="municipio" value="Municipio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
                 <p:selectOneMenu id="municipio" value="#{denunciaDelitoController.denunciaDelito.idMunicipio.idParametro}" required="true" requiredMessage="Ingrese en el Municipio">
                     <f:selectItems value="#{denunciaDelitoController.listaMunicipios}" var="varMunicipios" itemLabel="#{varMunicipios.nombreParametro}" itemValue="#{varMunicipios.idParametro}"/>
                 </p:selectOneMenu>
-
-
 
                 <h:outputLabel for="barrio" value="Barrio: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
                 <p:selectOneMenu id="barrio" value="#{denunciaDelitoController.denunciaDelito.idBarrio.idParametro}" required="true" requiredMessage="Ingrese en el Municipio">
@@ -54,26 +52,11 @@
                 <p:inputText id="puntoCardenal" label="Punto Cardenal" value="#{denunciaDelitoController.denunciaDelito.puntoCardenal}" required="true" title="Punto Cardenal" maxlength="20" placeholder="Punto Cardenal" validatorMessage="Error en Punto Cardenal"/>
             </h:panelGrid>
         </fieldset><br/>
-        <p:gmap id="gmap" center="4.606912, -74.069365" zoom="16" type="ROADMAP" style="width:100%;height:400px"
-                model="#{denunciaDelitoController.emptyModel}" onPointClick="handlePointClick(event);" widgetVar="map" >
+
+        <p:gmap id="gmap" center="4.606912, -74.069365" zoom="16" type="ROADMAP" style="width:100%;height:400px;" model="#{denunciaDelitoController.emptyModel}" widgetVar="map" >
+            <p:ajax event="pointSelect" listener="#{denunciaDelitoController.onPointSelect}" update=":formularioPrincipal:growl :formularioPrincipal:gmap :formularioPrincipal:latitud :formularioPrincipal:longitud" />
+            <p:ajax event="overlaySelect" listener="#{denunciaDelitoController.onMarkerSelect}" update=":formularioPrincipal:growl"/>
         </p:gmap>
-
-
-        <p:dialog widgetVar="dlg" showEffect="fade">
-            <h:form prependId="false">
-                <h:panelGrid columns="2">
-                    <h:outputLabel for="title" value="Title:" />
-                    <p:inputText id="title" value="#{denunciaDelitoController.title}" />
-                    <f:facet name="footer">
-                        <p:commandButton value="Add" actionListener="#{denunciaDelitoController.addMarker}" update=":form:growl" oncomplete="markerAddComplete()" />
-                        <p:commandButton value="Cancel" onclick="return cancel()" />
-                    </f:facet>
-                </h:panelGrid>
-
-                <h:inputHidden id="lat" value="#{denunciaDelitoController.lat}" />
-                <h:inputHidden id="lng" value="#{denunciaDelitoController.lng}" />
-            </h:form>
-        </p:dialog>
 
         <script type="text/javascript">
             var currentMarker = null;
@@ -113,7 +96,7 @@
 
 
         <br/>
-        <p:commandButton id="button" value="Registrar" action="#{denunciaDelitoController.crarDenunciaDelito()}" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;" update="form growl"/>
+        <p:commandButton id="button" value="Registrar" action="#{denunciaDelitoController.crarDenunciaDelito()}" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;" update=":formularioPrincipal:growl"/>
 
     </ui:define>
 

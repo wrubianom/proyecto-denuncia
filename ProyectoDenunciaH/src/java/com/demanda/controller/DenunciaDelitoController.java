@@ -10,8 +10,10 @@ import com.denuncia.ejb.ParametroEJBLocal;
 import com.denuncia.entities.Denuncia;
 import com.denuncia.entities.DenunciaDelito;
 import com.denuncia.entities.Parametro;
+import com.denuncia.singleton.SingletonDenuncia;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -20,6 +22,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.event.map.PointSelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -49,16 +52,28 @@ public class DenunciaDelitoController implements Serializable {
     private double lat;
     private double lng;
 
+    private MapModel model;
+    private Marker marker;
+
     public DenunciaDelitoController() {
 
     }
 
     @PostConstruct
     public void init() {
+        iniciarDenuncia();
+        denunciaCurso = SingletonDenuncia.getinstance().getDenuncia();
+        if (denunciaCurso != null && denunciaCurso.getIdDenuncia() != null) {
+            DenunciaDelito res = this.denunciaDelitoEJB.findByIDDenuncia(denunciaCurso.getIdDenuncia());
+            if (res != null && res.getIdDenunciaDelito() != null) {
+                denunciaDelito = res;
+            }
+        }
         emptyModel = new DefaultMapModel();
+        model = new DefaultMapModel();
         this.listaMunicipios = this.parametroEJB.getParametroTipo("Municipios");
         this.listaBarrios = this.parametroEJB.getParametroTipo("Barrio");
-        iniciarDenuncia();
+
     }
 
     private void iniciarDenuncia() {
@@ -69,7 +84,9 @@ public class DenunciaDelitoController implements Serializable {
 
     public void crarDenunciaDelito() {
         try {
-            this.denunciaDelito.setIdDenuncia(new Denuncia(1));
+            this.denunciaDelito.setIdDenuncia(this.denunciaCurso);
+            this.denunciaDelito.setLongitud(new BigInteger(String.valueOf(lng)));
+            this.denunciaDelito.setLatitud(new BigInteger(String.valueOf(lat)));
             this.denunciaDelitoEJB.create(denunciaDelito);
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Message", "Se registro correctamente"));
@@ -84,9 +101,22 @@ public class DenunciaDelitoController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + lat + ", Lng:" + lng));
     }
 
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        //this.marker = (Marker) event.getOverlay();
+        System.out.println("ENTROO");
+    }
+
     public void onPointSelect(PointSelectEvent event) {
         System.out.println("Add marker title: " + title);
-       
+        LatLng latlng = event.getLatLng();
+        emptyModel = new DefaultMapModel();
+        Marker marker = new Marker(new LatLng(event.getLatLng().getLat(), event.getLatLng().getLng()), title);
+        emptyModel.addOverlay(marker);
+        System.out.println(":::::::::::::: " + marker.getLatlng().getLat() + " :::::::::::::: " + marker.getLatlng().getLng());
+        lat = marker.getLatlng().getLat();
+        lng = marker.getLatlng().getLng();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
+
     }
 
     public DenunciaDelito getDenunciaDelito() {
@@ -143,6 +173,22 @@ public class DenunciaDelitoController implements Serializable {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public MapModel getModel() {
+        return model;
+    }
+
+    public void setModel(MapModel model) {
+        this.model = model;
+    }
+
+    public Marker getMarker() {
+        return marker;
+    }
+
+    public void setMarker(Marker marker) {
+        this.marker = marker;
     }
 
 }

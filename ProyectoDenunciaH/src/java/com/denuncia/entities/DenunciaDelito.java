@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DenunciaDelito.findByTipoDireccion2", query = "SELECT d FROM DenunciaDelito d WHERE d.tipoDireccion2 = :tipoDireccion2"),
     @NamedQuery(name = "DenunciaDelito.findByCom2", query = "SELECT d FROM DenunciaDelito d WHERE d.com2 = :com2"),
     @NamedQuery(name = "DenunciaDelito.findByLetra2", query = "SELECT d FROM DenunciaDelito d WHERE d.letra2 = :letra2"),
+    @NamedQuery(name = "DenunciaDelito.findByIdDenuncia", query = "SELECT d FROM DenunciaDelito d WHERE d.idDenuncia.idDenuncia = :ingDenuncia"),
     @NamedQuery(name = "DenunciaDelito.findByPuntoCardenal", query = "SELECT d FROM DenunciaDelito d WHERE d.puntoCardenal = :puntoCardenal")})
 public class DenunciaDelito implements Serializable {
 
