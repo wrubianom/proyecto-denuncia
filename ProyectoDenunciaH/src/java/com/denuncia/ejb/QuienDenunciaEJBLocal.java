@@ -16,4 +16,6 @@ import javax.ejb.Local;
 public interface QuienDenunciaEJBLocal {
 
     public DenunciaPersona crearDenunciaPersona(DenunciaPersona nueva);
+    
+    public DenunciaPersona consultarDenunciaPersonaByIdDenuncia(Integer idDenuncia);
 }

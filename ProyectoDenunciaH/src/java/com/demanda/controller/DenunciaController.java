@@ -35,6 +35,9 @@ public class DenunciaController implements Serializable {
     @EJB
     private DenunciaEJBLocal denunciaEJB;
 
+    private Denuncia denunciaCurso = null;
+    private Integer idDenunciabuscar;
+
     private Denuncia denunciaNueva = new Denuncia();
     private List<Parametro> tipoDelitos = new ArrayList<Parametro>();
     private List<Parametro> delitoslist = new ArrayList<Parametro>();
@@ -52,14 +55,21 @@ public class DenunciaController implements Serializable {
 
     @PostConstruct
     private void init() {
-        
+
         this.tipoDelitos = this.parametroEJB.getParametroTipo("TipoDelito");
         this.delitoslist = this.parametroEJB.getParametroTipo("Delito");
         this.unidadInvestigativa = this.parametroEJB.getParametroTipo("UnidadInvestigativa");
         this.modalidades = this.parametroEJB.getParametroTipo("Modalidad");
         this.tiposArmas = this.parametroEJB.getParametroTipo("TipoArma");
         this.tiposMoviles = this.parametroEJB.getParametroTipo("TipoMovil");
+
         iniciarDenuncia();
+
+        denunciaCurso = SingletonDenuncia.getinstance().getDenuncia();
+
+        if (denunciaCurso != null && denunciaCurso.getIdDenuncia() != null) {
+            this.denunciaNueva = this.denunciaCurso;
+        }
         System.out.println("hola");
     }
 
@@ -86,6 +96,43 @@ public class DenunciaController implements Serializable {
         } else {
             context.addMessage(null, new FacesMessage("Message", "No se pudo registrar la denuncia... Intente nuevamente"));
         }
+        return "";
+    }
+
+    public String buscarDenuncia() {
+        System.out.println("entro a nueva denuncia");
+        if (this.idDenunciabuscar != null) {
+            Denuncia res = this.denunciaEJB.bucsarDenunciaIdDenuncia(this.idDenunciabuscar);
+            if (res != null && res.getIdDenuncia() != null) {
+                this.denunciaNueva = res;
+                this.denunciaCurso = res;
+                SingletonDenuncia.getinstance().setDenuncia(res);
+            } else {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Message", "No se encontraron resultados "));
+            }
+
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage("Message", "Ingrese un id de denuncia"));
+        }
+        return "";
+    }
+
+    public String nuevaDenuncia() {
+        SingletonDenuncia.getinstance().setDenuncia(null);
+        this.denunciaCurso = null;
+        this.iniciarDenuncia();
+        this.denunciaNueva = new Denuncia();
+        this.denunciaNueva.setFechaDelito(null);
+        this.denunciaNueva.setOtroDelito("");
+        this.denunciaNueva.setArmaEmpleada(new Parametro());
+        this.denunciaNueva.setIdDelito(new Parametro());
+        this.denunciaNueva.setIdTipoDelito(new Parametro());
+        this.denunciaNueva.setModalidad(new Parametro());
+        this.denunciaNueva.setMovilAgreado(new Parametro());
+        this.denunciaNueva.setMovilVictima(new Parametro());
+        this.denunciaNueva.setUnidadInvestigativa(new Parametro());
         return "";
     }
 
@@ -143,6 +190,30 @@ public class DenunciaController implements Serializable {
 
     public void setTiposMoviles(List<Parametro> tiposMoviles) {
         this.tiposMoviles = tiposMoviles;
+    }
+
+    public Denuncia getDenunciaCurso() {
+        return denunciaCurso;
+    }
+
+    public void setDenunciaCurso(Denuncia denunciaCurso) {
+        this.denunciaCurso = denunciaCurso;
+    }
+
+    public boolean isDenunciaCursoNotNull() {
+        if (this.denunciaCurso != null && this.denunciaCurso.getIdDenuncia() != null) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public Integer getIdDenunciabuscar() {
+        return idDenunciabuscar;
+    }
+
+    public void setIdDenunciabuscar(Integer idDenunciabuscar) {
+        this.idDenunciabuscar = idDenunciabuscar;
     }
 
 }

@@ -12,4 +12,12 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/quienDenunciar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BIENES_HURTADOS</from-outcome>
+            <to-view-id>/bienesHurtados.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
