@@ -51,6 +51,8 @@ public class DenunciaDelitoController implements Serializable {
     private String title;
     private double lat;
     private double lng;
+    private static double latitud;
+    private static double longitud;
 
     private MapModel model;
     private Marker marker;
@@ -85,25 +87,14 @@ public class DenunciaDelitoController implements Serializable {
     public void crarDenunciaDelito() {
         try {
             this.denunciaDelito.setIdDenuncia(this.denunciaCurso);
-            this.denunciaDelito.setLongitud(new BigInteger(String.valueOf(lng)));
-            this.denunciaDelito.setLatitud(new BigInteger(String.valueOf(lat)));
+            this.denunciaDelito.setLongitud(longitud);
+            this.denunciaDelito.setLatitud(latitud);
             this.denunciaDelitoEJB.create(denunciaDelito);
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Message", "Se registro correctamente"));
         } catch (Exception e) {
             System.out.println("Error: " + e.toString());
         }
-    }
-
-    public void addMarker(ActionEvent actionEvent) {
-        Marker marker = new Marker(new LatLng(lat, lng), title);
-        emptyModel.addOverlay(marker);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + lat + ", Lng:" + lng));
-    }
-
-    public void onMarkerSelect(OverlaySelectEvent event) {
-        //this.marker = (Marker) event.getOverlay();
-        System.out.println("ENTROO");
     }
 
     public void onPointSelect(PointSelectEvent event) {
@@ -115,6 +106,8 @@ public class DenunciaDelitoController implements Serializable {
         System.out.println(":::::::::::::: " + marker.getLatlng().getLat() + " :::::::::::::: " + marker.getLatlng().getLng());
         lat = marker.getLatlng().getLat();
         lng = marker.getLatlng().getLng();
+        latitud = marker.getLatlng().getLat();
+        longitud = marker.getLatlng().getLng();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
 
     }

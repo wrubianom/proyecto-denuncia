@@ -52,9 +52,9 @@ public class DenunciaDelito implements Serializable {
     @Column(name = "id_denuncia_delito")
     private Integer idDenunciaDelito;
     @Column(name = "latitud")
-    private BigInteger latitud;
+    private Double latitud;
     @Column(name = "longitud")
-    private BigInteger longitud;
+    private Double longitud;
     @Size(max = 20)
     @Column(name = "clase_sitio")
     private String claseSitio;
@@ -107,19 +107,19 @@ public class DenunciaDelito implements Serializable {
         this.idDenunciaDelito = idDenunciaDelito;
     }
 
-    public BigInteger getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(BigInteger latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
-    public BigInteger getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(BigInteger longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
