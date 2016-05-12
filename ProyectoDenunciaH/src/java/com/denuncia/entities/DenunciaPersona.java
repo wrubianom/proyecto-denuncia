@@ -7,7 +7,6 @@ package com.denuncia.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,10 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "DenunciaPersona.findAll", query = "SELECT d FROM DenunciaPersona d"),
     @NamedQuery(name = "DenunciaPersona.findByIdDenunciaPersona", query = "SELECT d FROM DenunciaPersona d WHERE d.idDenunciaPersona = :idDenunciaPersona"),
+    @NamedQuery(name = "DenunciaPersona.findByIdDenuncia", query = "SELECT d FROM DenunciaPersona d WHERE d.idDenuncia.idDenuncia = :intIdDenuncia"),
     @NamedQuery(name = "DenunciaPersona.findByAgresorIdentificado", query = "SELECT d FROM DenunciaPersona d WHERE d.agresorIdentificado = :agresorIdentificado"),
-    @NamedQuery(name = "DenunciaPersona.findByObservaciones", query = "SELECT d FROM DenunciaPersona d WHERE d.observaciones = :observaciones"),
-    @NamedQuery(name = "DenunciaPersona.findByIdDenuncia", query = "SELECT d FROM DenunciaPersona d WHERE d.idDenuncia.idDenuncia = :intIdDenuncia")}
-)
+    @NamedQuery(name = "DenunciaPersona.findByObservaciones", query = "SELECT d FROM DenunciaPersona d WHERE d.observaciones = :observaciones")})
 public class DenunciaPersona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,9 +46,8 @@ public class DenunciaPersona implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "observaciones")
     private String observaciones;
-
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Persona idPersona;
     @JoinColumn(name = "id_relaccion_agresor", referencedColumnName = "id_parametro")
     @ManyToOne
@@ -138,5 +135,5 @@ public class DenunciaPersona implements Serializable {
     public String toString() {
         return "com.denuncia.entities.DenunciaPersona[ idDenunciaPersona=" + idDenunciaPersona + " ]";
     }
-
+    
 }

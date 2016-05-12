@@ -78,6 +78,9 @@ public class Persona implements Serializable {
     private String correElectronico;
     @OneToMany(mappedBy = "idPersona")
     private List<DenunciaPersona> denunciaPersonaList;
+    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_parametro")
+    @ManyToOne
+    private Parametro idTipoDocumento;
     @JoinColumn(name = "id_profesion", referencedColumnName = "id_parametro")
     @ManyToOne
     private Parametro idProfesion;
@@ -85,9 +88,6 @@ public class Persona implements Serializable {
     @ManyToOne
     private Parametro idClaseEmpleado;
     @JoinColumn(name = "id_nivel_academico", referencedColumnName = "id_parametro")
-    @ManyToOne
-    private Parametro idTipoDocumento;
-    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_parametro")
     @ManyToOne
     private Parametro idNivelAcademico;
     @JoinColumn(name = "id_estado_civil", referencedColumnName = "id_parametro")
@@ -188,6 +188,14 @@ public class Persona implements Serializable {
         this.denunciaPersonaList = denunciaPersonaList;
     }
 
+    public Parametro getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(Parametro idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
+    }
+
     public Parametro getIdProfesion() {
         return idProfesion;
     }
@@ -256,17 +264,9 @@ public class Persona implements Serializable {
         return true;
     }
 
-    public Parametro getIdTipoDocumento() {
-        return idTipoDocumento;
-    }
-
-    public void setIdTipoDocumento(Parametro idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
-    }
-
     @Override
     public String toString() {
         return "com.denuncia.entities.Persona[ idPersona=" + idPersona + " ]";
     }
-
+    
 }

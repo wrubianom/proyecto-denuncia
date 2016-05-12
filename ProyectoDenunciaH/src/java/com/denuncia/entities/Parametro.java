@@ -77,18 +77,34 @@ public class Parametro implements Serializable {
     private List<Denuncia> denunciaList5;
     @OneToMany(mappedBy = "movilVictima")
     private List<Denuncia> denunciaList6;
-    @OneToMany(mappedBy = "idProfesion")
+    @OneToMany(mappedBy = "idTipoNovedad")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList;
+    @OneToMany(mappedBy = "idCiudadAutoridad")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList1;
+    @OneToMany(mappedBy = "idAutoridad")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList2;
+    @OneToMany(mappedBy = "idDestino")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList3;
+    @OneToMany(mappedBy = "idInstitucion")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList4;
+    @OneToMany(mappedBy = "idTipoBien")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList5;
+    @OneToMany(mappedBy = "idClaseBien")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList6;
+    @OneToMany(mappedBy = "idTipoDocumento")
     private List<Persona> personaList;
-    @OneToMany(mappedBy = "idClaseEmpleado")
+    @OneToMany(mappedBy = "idProfesion")
     private List<Persona> personaList1;
-    @OneToMany(mappedBy = "idNivelAcademico")
+    @OneToMany(mappedBy = "idClaseEmpleado")
     private List<Persona> personaList2;
-    @OneToMany(mappedBy = "idEstadoCivil")
+    @OneToMany(mappedBy = "idNivelAcademico")
     private List<Persona> personaList3;
-    @OneToMany(mappedBy = "lugarNacimiento")
+    @OneToMany(mappedBy = "idEstadoCivil")
     private List<Persona> personaList4;
-    @OneToMany(mappedBy = "sexo")
+    @OneToMany(mappedBy = "lugarNacimiento")
     private List<Persona> personaList5;
+    @OneToMany(mappedBy = "sexo")
+    private List<Persona> personaList6;
 
     public Parametro() {
     }
@@ -247,6 +263,69 @@ public class Parametro implements Serializable {
     }
 
     @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList() {
+        return denunciaBienesHurtadosList;
+    }
+
+    public void setDenunciaBienesHurtadosList(List<DenunciaBienesHurtados> denunciaBienesHurtadosList) {
+        this.denunciaBienesHurtadosList = denunciaBienesHurtadosList;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList1() {
+        return denunciaBienesHurtadosList1;
+    }
+
+    public void setDenunciaBienesHurtadosList1(List<DenunciaBienesHurtados> denunciaBienesHurtadosList1) {
+        this.denunciaBienesHurtadosList1 = denunciaBienesHurtadosList1;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList2() {
+        return denunciaBienesHurtadosList2;
+    }
+
+    public void setDenunciaBienesHurtadosList2(List<DenunciaBienesHurtados> denunciaBienesHurtadosList2) {
+        this.denunciaBienesHurtadosList2 = denunciaBienesHurtadosList2;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList3() {
+        return denunciaBienesHurtadosList3;
+    }
+
+    public void setDenunciaBienesHurtadosList3(List<DenunciaBienesHurtados> denunciaBienesHurtadosList3) {
+        this.denunciaBienesHurtadosList3 = denunciaBienesHurtadosList3;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList4() {
+        return denunciaBienesHurtadosList4;
+    }
+
+    public void setDenunciaBienesHurtadosList4(List<DenunciaBienesHurtados> denunciaBienesHurtadosList4) {
+        this.denunciaBienesHurtadosList4 = denunciaBienesHurtadosList4;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList5() {
+        return denunciaBienesHurtadosList5;
+    }
+
+    public void setDenunciaBienesHurtadosList5(List<DenunciaBienesHurtados> denunciaBienesHurtadosList5) {
+        this.denunciaBienesHurtadosList5 = denunciaBienesHurtadosList5;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList6() {
+        return denunciaBienesHurtadosList6;
+    }
+
+    public void setDenunciaBienesHurtadosList6(List<DenunciaBienesHurtados> denunciaBienesHurtadosList6) {
+        this.denunciaBienesHurtadosList6 = denunciaBienesHurtadosList6;
+    }
+
+    @XmlTransient
     public List<Persona> getPersonaList() {
         return personaList;
     }
@@ -298,6 +377,15 @@ public class Parametro implements Serializable {
 
     public void setPersonaList5(List<Persona> personaList5) {
         this.personaList5 = personaList5;
+    }
+
+    @XmlTransient
+    public List<Persona> getPersonaList6() {
+        return personaList6;
+    }
+
+    public void setPersonaList6(List<Persona> personaList6) {
+        this.personaList6 = personaList6;
     }
 
     @Override
