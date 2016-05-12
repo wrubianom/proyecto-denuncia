@@ -12,42 +12,86 @@
             <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #4: Descripción del Bien</legend>
             <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
                 <h:outputLabel for="claseBien" value="Clase de Bien: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="claseBien" label="Clase de Bien" title="Clase de Bien" maxlength="20" immediate="true" placeholder="Clase de Bien" validatorMessage="Error en Clase de Bien"/>
+
+                <p:selectOneMenu id="claseBien" value="#{bienesHurtadosController.denunciaBienesHurtados.idClaseBien.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listClasebien}" var="classB" itemLabel="#{classB.nombreParametro}" itemValue="#{classB.idParametro}"/>
+                </p:selectOneMenu>
+
                 <h:outputLabel for="tipoBien" value="Tipo de Bien: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="tipoBien" label="Tipo de Bien" title="Tipo de Bien" maxlength="20" placeholder="Tipo de Bien" validatorMessage="Error en Tipo de Bien"/>
+
+                <p:selectOneMenu id="tipoBien" value="#{bienesHurtadosController.denunciaBienesHurtados.idTipoBien.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listTipoBien}" var="classTipoB" itemLabel="#{classTipoB.nombreParametro}" itemValue="#{classTipoB.idParametro}"/>
+                </p:selectOneMenu>
+
+
+
                 <h:outputLabel for="asegurado" value="Asegurado: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="asegurado" label="Asegurado" title="Asegurado" maxlength="20" placeholder="Asegurado" validatorMessage="Error en Asegurado"/>
+                <p:selectOneMenu id="asegurado" value="#{bienesHurtadosController.denunciaBienesHurtados.asegurado}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItem itemLabel="Si" itemValue="true"></f:selectItem>
+                    <f:selectItem itemLabel="No" itemValue="false"></f:selectItem>
+                </p:selectOneMenu>
+
+
                 <h:outputLabel for="marca" value="Marca: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="marca" label="Marca" title="Marca" maxlength="20" placeholder="Marca" validatorMessage="Error en Marca"/>
+                <p:inputText id="marca" label="Marca" value="#{bienesHurtadosController.denunciaBienesHurtados.marca}" title="Marca" maxlength="20" placeholder="Marca" validatorMessage="Error en Marca"/>
+
                 <h:outputLabel for="linea" value="Linea: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="linea" label="Linea" title="Linea" maxlength="20" placeholder="Linea" validatorMessage="Error en Linea"/>
+                <p:inputText id="linea" label="Linea" value="#{bienesHurtadosController.denunciaBienesHurtados.linea}" title="Linea" maxlength="20" placeholder="Linea" validatorMessage="Error en Linea"/>
+
+
                 <h:outputLabel for="elementoEstatal" value="Elemento Estatal: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="elementoEstatal" label="Elemento Estatal" title="Elemento Estatal" maxlength="20" placeholder="Elemento Estatal" validatorMessage="Error en Elemento Estatal"/>
+                <p:selectOneMenu id="elementoEstatal" value="#{bienesHurtadosController.denunciaBienesHurtados.elementoEstatal}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItem itemLabel="Si" itemValue="true"></f:selectItem>
+                    <f:selectItem itemLabel="No" itemValue="false"></f:selectItem>
+                </p:selectOneMenu>
+
+
                 <h:outputLabel for="institucion" value="Institución: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="institucion" label="Institución" title="Institución" maxlength="20" placeholder="Institución" validatorMessage="Error en Institución"/>
+                <p:selectOneMenu id="institucion" value="#{bienesHurtadosController.denunciaBienesHurtados.idInstitucion.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listInstituciones}" var="classinstitucion" itemLabel="#{classinstitucion.nombreParametro}" itemValue="#{classinstitucion.idParametro}"/>
+                </p:selectOneMenu>
+
+
+
+
                 <h:outputLabel for="cantidad" value="Cantidad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="cantidad" label="Cantidad" title="Cantidad" maxlength="20" placeholder="Cantidad" validatorMessage="Error en Cantidad"/>
+                <p:inputText id="cantidad" label="Cantidad" value="#{bienesHurtadosController.denunciaBienesHurtados.cantidad}" title="Cantidad" maxlength="20" placeholder="Cantidad" validatorMessage="Error en Cantidad"/>
                 <h:outputLabel for="valorActual" value="Valor Actual: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="valorActual" label="Valor Actual" title="Valor Actual" maxlength="20" placeholder="Valor Actual" validatorMessage="Error en Valor Actual"/>
+                <p:inputText id="valorActual" label="Valor Actual" value="#{bienesHurtadosController.denunciaBienesHurtados.valorActual}" title="Valor Actual" maxlength="20" placeholder="Valor Actual" validatorMessage="Error en Valor Actual"/>
                 <h:outputLabel for="valorComercial" value="Valor Comercial: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="valorComercial" label="Valor Comercial" title="Valor Comercial" maxlength="20" placeholder="Valor Comercial" validatorMessage="Error en Valor Comercial"/>
+                <p:inputText id="valorComercial" label="Valor Comercial" value="#{bienesHurtadosController.denunciaBienesHurtados.valorComercial}" title="Valor Comercial" maxlength="20" placeholder="Valor Comercial" validatorMessage="Error en Valor Comercial"/>
             </h:panelGrid>
         </fieldset><br/>
         <fieldset style="background: rgba(0,0,0,0.3);TextoLegend">
             <legend align="left" style="color: #ffffff; font-style: italic;">Formulario #4: Datos Autoridad A Disposición</legend>
             <h:panelGrid columns="3" cellspacing="5" cellpadding="5">
                 <h:outputLabel for="destino" value="Destino: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="destino" label="Destino" title="Destino" maxlength="20" placeholder="Destino" validatorMessage="Error en Destino"/>
+
+                <p:selectOneMenu id="destino" value="#{bienesHurtadosController.denunciaBienesHurtados.idDestino.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listDestino}" var="classdestino" itemLabel="#{classdestino.nombreParametro}" itemValue="#{classdestino.idParametro}"/>
+                </p:selectOneMenu>
+
                 <h:outputLabel for="autoridad" value="Autoridad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="autoridad" label="Autoridad" title="Autoridad" maxlength="20" placeholder="Autoridad" validatorMessage="Error en Autoridad"/>
+                <p:selectOneMenu id="autoridad" value="#{bienesHurtadosController.denunciaBienesHurtados.idAutoridad.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listAutoridad}" var="clasautoridad" itemLabel="#{clasautoridad.nombreParametro}" itemValue="#{clasautoridad.idParametro}"/>
+                </p:selectOneMenu>
+
                 <h:outputLabel for="ciudadautoridad" value="Ciudad Autoridad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="ciudadautoridad" label="Ciudad Autoridad" title="Ciudad Autoridad" maxlength="20" placeholder="Ciudad Autoridad" validatorMessage="Error en Ciudad Autoridad"/>
-                <h:outputLabel for="delitoInmoviliario" value="Delito Inmoviliario: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="delitoInmoviliario" label="Delito Inmoviliario" title="Delito Inmoviliario" maxlength="20" placeholder="Delito Inmoviliario" validatorMessage="Error en Delito Inmoviliario"/>
+                <p:selectOneMenu id="ciudadautoridad" value="#{bienesHurtadosController.denunciaBienesHurtados.idCiudadAutoridad.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listCiudadAutoridad}" var="ciudadautoridad" itemLabel="#{ciudadautoridad.nombreParametro}" itemValue="#{ciudadautoridad.idParametro}"/>
+                </p:selectOneMenu>
+
+                <h:outputLabel for="delitoInmoviliario" value="Delito Involucrado: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
+                <p:inputText id="delitoInmoviliario" value="#{bienesHurtadosController.denunciaBienesHurtados.delitoInvolucrado}"  label="Delito Involucrado:" title="Delito Involucrado:" maxlength="20" placeholder="Delito Involucrado:" validatorMessage="Error en Delito Involucrado:"/>
+
+
                 <h:outputLabel for="tipoNovedad" value="Tipo Novedad: " styleClass="TextoLabaelOne"/><p:spacer width="20"/>
-                <p:inputText id="tipoNovedad" label="Tipo Novedad" title="Tipo Novedad" maxlength="20" placeholder="Tipo Novedad" validatorMessage="Error en Tipo Novedad"/>
+                <p:selectOneMenu id="tipoNovedad" value="#{bienesHurtadosController.denunciaBienesHurtados.idTipoNovedad.idParametro}" required="true" requiredMessage="Ingrese el tipo de delito">
+                    <f:selectItems value="#{bienesHurtadosController.listTipoNovedad}" var="clastipoNovedad" itemLabel="#{clastipoNovedad.nombreParametro}" itemValue="#{clastipoNovedad.idParametro}"/>
+                </p:selectOneMenu>
+
             </h:panelGrid>
         </fieldset><br/>
-        <p:commandButton id="button" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
+        <p:commandButton id="button" action="#{bienesHurtadosController.persistirInformacion()}" value="Registrar" label="Registrar" title="Registrar" icon="ui-icon-check" style="font-size: smaller;margin-left: 50%;"/>
     </ui:define>
 </ui:composition>

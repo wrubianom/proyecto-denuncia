@@ -80,6 +80,8 @@ public class Denuncia implements Serializable {
     @JoinColumn(name = "movil_victima", referencedColumnName = "id_parametro")
     @ManyToOne
     private Parametro movilVictima;
+    @OneToMany(mappedBy = "idDenuncia")
+    private List<DenunciaBienesHurtados> denunciaBienesHurtadosList;
 
     public Denuncia() {
     }
@@ -192,6 +194,15 @@ public class Denuncia implements Serializable {
 
     public void setMovilVictima(Parametro movilVictima) {
         this.movilVictima = movilVictima;
+    }
+
+    @XmlTransient
+    public List<DenunciaBienesHurtados> getDenunciaBienesHurtadosList() {
+        return denunciaBienesHurtadosList;
+    }
+
+    public void setDenunciaBienesHurtadosList(List<DenunciaBienesHurtados> denunciaBienesHurtadosList) {
+        this.denunciaBienesHurtadosList = denunciaBienesHurtadosList;
     }
 
     @Override

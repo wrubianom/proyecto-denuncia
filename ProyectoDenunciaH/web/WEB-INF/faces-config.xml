@@ -20,4 +20,13 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/bienesHurtados.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>LUGAR_DELITO</from-outcome>
+            <to-view-id>/lugarDelito.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
