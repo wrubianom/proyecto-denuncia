@@ -14,30 +14,32 @@
     </h:head>
 
     <h:body >
-        <table cellspacing="10px" style="margin-left: 30%">
-            <tr>
-                <td id="top" style="background: rgba(0,0,0,0);">
-                    <center><h:outputLabel value="¡DENUNCIE!"/></center>
-                    <p:tabMenu style="background: rgba(0,0,0,0); border: none;">
-                        <p:menuitem value="Denuncia" outcome="/denuncia.xhtml" icon="ui-icon-search">                            
-                        </p:menuitem>
-                        <p:menuitem value="Bienes Hurtados" outcome="/bienesHurtados.xhtml" icon="ui-icon-search">
-                        </p:menuitem>
-                        <p:menuitem value="Lugar del Delito" outcome="/lugarDelito.xhtml" icon="ui-icon-searcht">
-                        </p:menuitem>
-                        <p:menuitem value="A Quien Denunciar" outcome="/quienDenunciar.xhtml" icon="ui-icon-search">
-                        </p:menuitem>
-                        <p:menuitem value="Politicas" outcome="/politicas.xhtml" icon="ui-icon-search">
-                        </p:menuitem>
-                    </p:tabMenu>
-                </td>
-            </tr>
-            <tr>
-                <td id="content" style="background: rgba(0,0,0,0);">
-                    <center><ui:insert name="content"></ui:insert></center>
-                </td>
-            </tr>
-        </table>
+        <h:form id="form">
+            <table cellspacing="10px" style="margin-left: 30%">
+                <tr>
+                    <td id="top" style="background: rgba(0,0,0,0);">
+                        <center><h:outputLabel value="¡DENUNCIE!"/></center>
+                        <p:tabMenu style="background: rgba(0,0,0,0); border: none;">
+                            <p:menuitem value="Denuncia" outcome="/denuncia.xhtml" icon="ui-icon-search">                            
+                            </p:menuitem>
+                            <p:menuitem value="Bienes Hurtados" outcome="/bienesHurtados.xhtml" icon="ui-icon-search">
+                            </p:menuitem>
+                            <p:menuitem value="Lugar del Delito" outcome="/lugarDelito.xhtml" icon="ui-icon-searcht">
+                            </p:menuitem>
+                            <p:menuitem value="A Quien Denunciar" outcome="/quienDenunciar.xhtml" icon="ui-icon-search">
+                            </p:menuitem>
+                            <p:menuitem value="Politicas" outcome="/politicas.xhtml" icon="ui-icon-search">
+                            </p:menuitem>
+                        </p:tabMenu>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="content" style="background: rgba(0,0,0,0);">
+                        <center><ui:insert name="content"></ui:insert></center>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
     </h:body>
 
 </html>

@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
  * @author user
  */
 public abstract class AbstractFacade<T> {
+
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -22,7 +23,11 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        try {
+            getEntityManager().persist(entity);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.toString());
+        }
     }
 
     public void edit(T entity) {
@@ -59,5 +64,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }
