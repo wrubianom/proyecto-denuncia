@@ -25,17 +25,3 @@
         </fieldset><br/>
     </ui:define>
 </ui:composition>
-
-
-<p:gmap  model="#{addMarkers.emptyModel}" id="gmap" streetView="false"  navigationControl="true" mapTypeControl="true"  draggable="true" center="26.959512, -12.821044" zoom="8" type="ROADMAP" style="width:100%;height:500px">
-    <p:ajax  event="overlaySelect" listener="#{addMarkers.onMarkerSelect}" id="open1"  update="messages"/>
-    <p:gmapInfoWindow  id="infoWindow">
-        <p:outputPanel style="text-align: center;  margin: auto">
-            <p:commandButton ajax="true" type="button" value="open map"  onclick="PF('dlg').show();" />
-
-
-            public void onMarkerSelect(OverlaySelectEvent event)  {
-            marker = (Marker) event.getOverlay();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "scanning the materials", "Site :"+ marker.getTitle() ));
-
-            }
