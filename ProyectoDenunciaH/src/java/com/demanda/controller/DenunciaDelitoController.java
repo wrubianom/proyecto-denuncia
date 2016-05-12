@@ -64,15 +64,19 @@ public class DenunciaDelitoController implements Serializable {
     @PostConstruct
     public void init() {
         iniciarDenuncia();
+        emptyModel = new DefaultMapModel();
+        model = new DefaultMapModel();
         denunciaCurso = SingletonDenuncia.getinstance().getDenuncia();
         if (denunciaCurso != null && denunciaCurso.getIdDenuncia() != null) {
             DenunciaDelito res = this.denunciaDelitoEJB.findByIDDenuncia(denunciaCurso.getIdDenuncia());
             if (res != null && res.getIdDenunciaDelito() != null) {
                 denunciaDelito = res;
+                lat = res.getLatitud();
+                lng = res.getLongitud();
+                Marker marker = new Marker(new LatLng(lat, lng), "Denuncia");
+                emptyModel.addOverlay(marker);
             }
         }
-        emptyModel = new DefaultMapModel();
-        model = new DefaultMapModel();
         this.listaMunicipios = this.parametroEJB.getParametroTipo("Municipios");
         this.listaBarrios = this.parametroEJB.getParametroTipo("Barrio");
 
@@ -89,7 +93,7 @@ public class DenunciaDelitoController implements Serializable {
             this.denunciaDelito.setIdDenuncia(this.denunciaCurso);
             this.denunciaDelito.setLongitud(longitud);
             this.denunciaDelito.setLatitud(latitud);
-            this.denunciaDelitoEJB.create(denunciaDelito);
+            this.denunciaDelitoEJB.edit(denunciaDelito);
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage("Message", "Se registro correctamente"));
         } catch (Exception e) {
